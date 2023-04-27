@@ -30,7 +30,6 @@ Line_t *addNewLine(FileParams_t *pFile){
             curLine = curLine->next;
         }
     }
-
     Line_t *newLine = malloc(sizeof(Line_t));
     newLine->next = NULL;
     newLine->data = listInit();
@@ -42,7 +41,6 @@ Line_t *addNewLine(FileParams_t *pFile){
     } else{
         curLine->next = newLine;
     }
-
     return newLine;
 }
 
@@ -79,4 +77,40 @@ void printFile(FileParams_t *pFile){
         printList(curLine->data);
         curLine = curLine->next;
     }
+}
+
+void freeFile(FileParams_t *pFile){
+    Line_t *curLine = pFile->pLine;
+    while (curLine != NULL){
+        Line_t *nextLine = curLine->next;
+        deleteList(curLine->data);
+        free(curLine);
+        curLine = nextLine;
+    }
+    free(pFile);
+}
+
+List_t *nextCombination(FileParams_t *pFile){
+    List_t *newComb = listInit();
+    Line_t *curLine = pFile->pLine;
+
+    for (int i = 0; i < pFile->LineCount; i++){
+        if (curLine->NumIndex >= curLine->data->listLen){
+            curLine->NumIndex = 0;
+            if (curLine->next != NULL){
+                curLine->next->NumIndex++;
+            } else{
+                return NULL;
+            }
+        }
+        ListNode_t *curElem = getElement(curLine->data, curLine->NumIndex);
+        ListNode_t *node = push(newComb, curElem->data);
+        node->index = curLine->NumIndex;
+
+        if (curLine->LineIndex == 0){
+            curLine->NumIndex++;
+        }
+        curLine = curLine->next;
+    }
+    return newComb;
 }

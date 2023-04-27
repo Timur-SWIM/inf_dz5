@@ -18,7 +18,7 @@ ListNode_t *push(List_t *pList, int data){
     newElem->data = data;
     newElem->index = pList->listLen;
     newElem->next = NULL;
-    if  (curElem->next == NULL){
+    if  (curElem == NULL){
         pList->pHead = newElem;
     } else {
         curElem->next = newElem;
@@ -50,7 +50,7 @@ void printList(List_t *pList){
     puts("]");
 }
 
-ListNode_t *getElement(List_t *pList, int index){
+ListNode_t *getElement(List_t *pList, unsigned int index){
     ListNode_t *curElem = pList->pHead;
     for (int i = 0; i < index; i++){
         curElem = curElem->next;

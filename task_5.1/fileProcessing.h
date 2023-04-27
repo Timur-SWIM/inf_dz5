@@ -40,4 +40,9 @@ void convStrtoIntline(Line_t *pLine, char *str);
 IndexError_t inputFilParams(FileParams_t *pFile, const char *filePath);
 
 void printFile(FileParams_t *pFile);
+
+void freeFile(FileParams_t *pFile);
+
+List_t *nextCombination(FileParams_t *pFile);
+
 #endif //TASK_5_1_FILEPROCESSING_H

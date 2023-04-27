@@ -8,7 +8,7 @@
 #include <stdio.h>
 typedef struct ListNode_t{
     int data;
-    int index;
+    unsigned int index;
     struct ListNode_t *next;
 }ListNode_t;
 
@@ -25,7 +25,7 @@ void deleteList(List_t *pList);
 
 void printList(List_t *pList);
 
-ListNode_t *getElement(List_t *pList, int index);
+ListNode_t *getElement(List_t *pList, unsigned int index);
 
 int sumElem(List_t *pList);
 #endif //TASK_5_1_LIST_H

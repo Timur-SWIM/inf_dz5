@@ -46,6 +46,10 @@ void printFile(FileParams_t *pFile);
 
 void freeFile(FileParams_t *pFile);
 
+Line_t *getLine(FileParams_t *pFile, unsigned  int index);
+
+void printNewCombination(FileParams_t *pFile);
+
 List_t *nextCombination(FileParams_t *pFile);
 
 #endif //TASK_5_2_FILEPROCESSING_H

@@ -14,7 +14,10 @@ int main(int argc, char *argv[]) {
         exit(error);
     }
     printFile(file);
-
+    putchar('\n');
+    printf("file->lineCount->%d", file->lineCount);
+    putchar('\n');
+    printNewCombination(file);
     freeFile(file);
     return 0;
 }

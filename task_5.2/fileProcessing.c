@@ -97,6 +97,34 @@ void freeFile(FileParams_t *pFile){
     free(pFile);
 }
 
+Line_t *getLine(FileParams_t *pFile, unsigned  int index){
+    Line_t *curLine = pFile->pLine;
+    for (int i = 0; i < index; i++){
+        curLine = curLine->next;
+        if (curLine == NULL){
+            puts("ERROR: Wrong index");
+            return NULL;
+        }
+    }
+    return curLine;
+}
+
+void printNewCombination(FileParams_t *pFile){
+    int lineCount = pFile->lineCount;
+    int midNum = lineCount / 2;
+    printf("%d\n", midNum);
+    for (int i = 0, j = (pFile->lineCount - 1); (i < (midNum+1) && j > (midNum-1)); (i++, j--)){
+        Line_t *curLine = getLine(pFile, i);
+        Line_t *nextLine = getLine(pFile, j);
+
+        printf("%d ", curLine->LineIndex);
+        printList(curLine->data);
+
+        printf("%d ", nextLine->LineIndex);
+        printList(nextLine->data);
+        //putchar('\n');
+    }
+}
 List_t *nextCombination(FileParams_t *pFile){
     List_t *newComb = listInit();
     Line_t *curLine = pFile->pLine;

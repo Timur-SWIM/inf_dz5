@@ -1,6 +1,4 @@
-#include "list.h"
-#include "fileProcessing.h"
-#include <stdio.h>
+#include "main.h"
 
 int main(int argc, char *argv[]){
     IndexError_t error = errorCheck(argc, argv);
@@ -33,7 +31,6 @@ int main(int argc, char *argv[]){
             printList(list);
             flag = 1;
         }
-        //printList(list);
         deleteList(list);
         list = nextCombination(file);
     }
